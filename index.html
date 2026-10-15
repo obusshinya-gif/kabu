@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="米国株・日本株・金銀を追いかける投資ノートから、証券口座の選び方と投資の勉強に役立つ本を紹介します。">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>証券口座えらびノート</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 帳簿のような罫線の上に、左寄せの見出しと縦に並ぶ口座カード。CTAは各カードの右下に固定位置 */
+:root{
+  --paper:#f7f8fa; --sheet:#ffffff; --ink:#14213a; --muted:#5a6578;
+  --rule:#dde2ea; --navy:#1d3a6e; --navy-ink:#ffffff; --brass:#a7802f; --brass-soft:#f3ecdc;
+  --display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1522; --sheet:#161e2e; --ink:#e7ebf2; --muted:#9aa5b8;
+  --rule:#2a3448; --navy:#8fb0e8; --navy-ink:#0f1522; --brass:#d4b06a; --brass-soft:#2a2516; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1522; --sheet:#161e2e; --ink:#e7ebf2; --muted:#9aa5b8;
+  --rule:#2a3448; --navy:#8fb0e8; --navy-ink:#0f1522; --brass:#d4b06a; --brass-soft:#2a2516; color-scheme:dark}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:820px;margin:0 auto}
+a{color:var(--navy)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+.prbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:10px;font-size:12px;color:var(--muted)}
+.pr{font-family:var(--mono);letter-spacing:.12em;border:1px solid var(--brass);color:var(--brass);padding:1px 8px;border-radius:2px}
+
+header.hero{padding-block:56px 40px;display:grid;gap:18px}
+.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--brass);font-weight:700}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,6vw,46px);line-height:1.35;margin:0;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--brass-soft) 62%)}
+.lead{color:var(--muted);max-width:36em;margin:0}
+
+section{padding-block:40px;border-top:1px solid var(--rule)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(22px,4vw,28px);margin:0 0 20px;text-wrap:balance}
+h3{margin:0;font-size:20px;font-family:var(--display);font-weight:800}
+
+.cards{display:grid;gap:20px}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:24px;display:grid;gap:14px}
+.card-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px}
+.tag{font-size:12px;color:var(--muted);letter-spacing:.06em}
+.card p{margin:0;min-width:0}
+.points{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.points li{padding-left:1.3em;position:relative}
+.points li::before{content:"";position:absolute;left:0;top:.8em;width:.55em;height:1px;background:var(--brass)}
+.cta{justify-self:start;display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--navy-ink);
+  text-decoration:none;font-weight:700;padding:12px 22px;border-radius:4px;transition:transform .15s}
+.cta:hover{transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+.note{font-size:13px;color:var(--muted)}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+thead th{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:.06em}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:700;white-space:nowrap}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding-block:14px;border-bottom:1px dashed var(--rule);counter-increment:s}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);font-family:var(--mono);color:var(--brass);font-size:22px;line-height:1.4}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:15px}
+
+.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.book{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:20px;display:grid;gap:10px;align-content:start}
+.book .author{font-size:13px;color:var(--muted);margin-top:-6px}
+.book .cat{font-size:12px;color:var(--brass);letter-spacing:.1em;font-weight:700}
+
+.follow{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:12px}
+.follow-card{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:22px;display:grid;gap:8px;align-content:start;
+  color:var(--ink);text-decoration:none;transition:border-color .15s}
+.follow-card:hover{border-color:var(--navy)}
+.follow-card .cat{font-size:12px;color:var(--brass);letter-spacing:.1em;font-weight:700}
+.follow-card .handle{font-family:var(--mono);font-size:13px;color:var(--navy)}
+.hero-links{display:flex;flex-wrap:wrap;gap:10px}
+footer{border-top:1px solid var(--rule);padding-block:28px 48px;font-size:13px;color:var(--muted);display:grid;gap:8px}
+footer p{margin:0}
+footer .about{margin-top:12px;padding-top:12px;border-top:1px dashed var(--rule)}
+footer .about a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.cta{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="prbar">
+    <span class="pr">PR</span>
+    <span>当ページはアフィリエイト広告を利用しています</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">米国株・日本株・金銀を追いかける投資ノートから</div>
+    <h1>証券口座は、<em>何を買いたいか</em>で選ぶ。</h1>
+    <p class="lead">毎日のnote記事で取り上げている銘柄を、実際に自分で買ってみたい人へ。私が使っている口座と、口座開設の流れ、勉強に役立った本をまとめました。</p>
+    <div class="hero-links">
+      <a class="cta" href="https://note.com/shinya_0708" target="_blank" rel="noopener">noteを読む →</a>
+      <a class="cta ghost" href="https://www.instagram.com/obus.shinya/reels/" target="_blank" rel="noopener">リールを見る →</a>
+    </div>
+  </header>
+
+  <section id="accounts">
+    <h2>おすすめの証券口座</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3>DMM.com証券「TOSSY」</h3>
+          <span class="tag">スマホで米国株・日本株</span>
+        </div>
+        <p>株式・為替(FX)・暗号資産・株価指数に加えて、金や原油などの商品まで、アプリひとつで取引できます。記事で取り上げる米国株や金の値動きを、そのままスマホでチェックしたい人に向いています。</p>
+        <ul class="points">
+          <li>株も金も1つのアプリで管理したい人</li>
+          <li>スマホ中心で取引したい人</li>
+        </ul>
+        <a class="cta" href="https://px.a8.net/svt/ejp?a8mat=4BEGDC+T69F6+1WP2+1HLVB6" rel="sponsored nofollow noopener" target="_blank">TOSSYの詳細を見る →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h3>松井証券</h3>
+          <span class="tag">老舗のネット証券</span>
+        </div>
+        <p>長い歴史を持つネット証券で、日本株の取引やサポート体制を重視する人の選択肢になります。2つ目の口座として使い分けるのもおすすめです。</p>
+        <ul class="points">
+          <li>日本株を中心に取引したい人</li>
+          <li>困ったときのサポートを重視する人</li>
+        </ul>
+        <a class="cta" href="https://www.matsui.co.jp/" rel="sponsored noopener" target="_blank">松井証券の詳細を見る →</a>
+      </article>
+    </div>
+    <p class="note">手数料・キャンペーン・取扱銘柄は変更されることがあります。最新の条件は必ず各社の公式サイトでご確認ください。</p>
+  </section>
+
+  <section id="compare">
+    <h2>どちらを選ぶ？</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>こんな人</th><th>向いている口座</th><th>理由</th></tr></thead>
+        <tbody>
+          <tr><th>米国株から始めたい</th><td><a href="https://px.a8.net/svt/ejp?a8mat=4BEGDC+T69F6+1WP2+1HPXWX" target="_blank" rel="sponsored nofollow noopener">DMM.com証券 TOSSY</a></td><td>株も金も、アプリひとつで扱える</td></tr>
+          <tr><th>日本株をじっくり</th><td>松井証券</td><td>日本株取引とサポートの実績</td></tr>
+          <tr><th>両方やりたい</th><td>2口座の併用</td><td>口座開設は無料。用途で使い分けられる</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="steps">
+    <h2>口座開設の流れ</h2>
+    <ol class="steps">
+      <li><div><b>公式サイトから申し込み</b><span>氏名・住所・メールアドレスなどを入力します。</span></div></li>
+      <li><div><b>本人確認書類を提出</b><span>マイナンバーカードがあるとスマホで完結しやすくなります。</span></div></li>
+      <li><div><b>審査・口座開設の通知</b><span>審査後、ログイン情報がメールや郵送で届きます。</span></div></li>
+      <li><div><b>入金して取引スタート</b><span>まずは少額から。記事の銘柄をウォッチリストに入れてみましょう。</span></div></li>
+    </ol>
+  </section>
+
+  <section id="books">
+    <h2>投資の勉強に役立つ本</h2>
+    <div class="books">
+      <div class="book">
+        <span class="cat">はじめの一冊</span>
+        <b>図解即戦力 資産の運用と投資のキホンがこれ1冊でしっかりわかる教科書</b>
+        <span class="author">伊藤亮太 著</span>
+        <p class="note">株・投資信託・債券など、資産運用の基本を図解で整理できる入門書。口座を開く前の土台づくりに。</p>
+        <a class="cta ghost" href="https://rpx.a8.net/svt/ejp?a8mat=4BEGDC+RZE7M+2HOM+BWGDT&amp;rakuten=y&amp;a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26101470709_4BEGDC_RZE7M_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17936731%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F21325027%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="sponsored nofollow noopener" target="_blank">楽天ブックスで見る</a>
+      </div>
+      <div class="book">
+        <span class="cat">米国株</span>
+        <b>ほったらかし投資FIRE</b>
+        <span class="author">ゆうパパ 著</span>
+        <p class="note">米国株の高配当銘柄に投資し、配当を再投資して資産を育てる方法を紹介した一冊。米国株の長期投資に興味がある人に。</p>
+        <a class="cta ghost" href="https://rpx.a8.net/svt/ejp?a8mat=4BEGDC+RZE7M+2HOM+BWGDT&amp;rakuten=y&amp;a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26101470709_4BEGDC_RZE7M_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17360826%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F20835143%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="sponsored nofollow noopener" target="_blank">楽天ブックスで見る</a>
+      </div>
+      <div class="book">
+        <span class="cat">日本株</span>
+        <b>5年で1億貯める株式投資</b>
+        <span class="author">kenmo(湘南投資勉強会)著</span>
+        <p class="note">給料に手をつけずにお金を増やす、4つの投資法を解説した一冊。日本株の銘柄選びの考え方がつかめます。</p>
+        <a class="cta ghost" href="https://rpx.a8.net/svt/ejp?a8mat=4BEGDC+RZE7M+2HOM+BWGDT&amp;rakuten=y&amp;a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26101470709_4BEGDC_RZE7M_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F18158375%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F21543588%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="sponsored nofollow noopener" target="_blank">楽天ブックスで見る</a>
+      </div>
+      <div class="book">
+        <span class="cat">金・銀</span>
+        <b>世界が注目するシルバー投資</b>
+        <span class="author">チャールズ・スパポドック 著(同友館)</span>
+        <p class="note">金と並ぶ貴金属、銀に投資する魅力と考え方を解説した一冊。金・銀の値動きを追う記事とあわせて読めます。※中古品の販売ページです。</p>
+        <a class="cta ghost" href="https://rpx.a8.net/svt/ejp?a8mat=4BEGDC+RZE7M+2HOM+BWGDT&amp;rakuten=y&amp;a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rakq4.2bo11a85.g00rakq4.2bo12fb9%2Fa26101470709_4BEGDC_RZE7M_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fvaboo%252Fva3661604449u20%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fvaboo%252Fi%252F16116683%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="sponsored nofollow noopener" target="_blank">楽天市場で見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="follow">
+    <h2>しんやの投資ノート</h2>
+    <div class="follow">
+      <a class="follow-card" href="https://note.com/shinya_0708" target="_blank" rel="noopener">
+        <span class="cat">note</span>
+        <b>米国株・日本株・金銀の注目ポイントを毎日更新</b>
+        <span class="note">はじめましての自己紹介記事から、最新の相場メモまで読めます。</span>
+        <span class="handle">note.com/shinya_0708 →</span>
+      </a>
+      <a class="follow-card" href="https://www.instagram.com/obus.shinya/reels/" target="_blank" rel="noopener">
+        <span class="cat">Instagram リール</span>
+        <b>記事の要点を短いリール動画で</b>
+        <span class="note">忙しい日でも、その日の注目銘柄を1分でチェックできます。</span>
+        <span class="handle">@obus.shinya のリール一覧 →</span>
+      </a>
+    </div>
+    <p class="note">最近の記事:「はじめまして、しんやです｜共通の趣味や悩みを持つ人とつながるため」</p>
+  </section>
+
+  <footer>
+    <p>本ページは情報提供を目的としたもので、特定の銘柄・金融商品の売買を推奨するものではありません。投資判断はご自身の責任でお願いします。</p>
+    <p>本ページのリンクにはアフィリエイトリンクが含まれます。</p>
+    <p class="about">自分の発信サイトを持ちたい方へ:<a href="https://px.a8.net/svt/ejp?a8mat=4BEGDC+SKTTE+50+2HE8HE" target="_blank" rel="sponsored nofollow noopener">ドメイン取得はお名前.com</a></p>
+  </footer>
+</div>
+
+</body>
+</html>
